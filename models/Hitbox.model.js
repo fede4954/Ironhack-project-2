@@ -1,9 +1,11 @@
-// const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose')
 
-// const hitboxSchema = new Schema({
-    
-// })
+const hitboxSchema = new Schema({
+    name: { type: String, required: true },
+    description: { type: String, required: true },
+    cars: [{ type: Schema.Types.ObjectId, ref: 'Car' }]
+})
 
-// const Hitbox = model('Hitbox', hitboxSchema)
+const Hitbox = model('Hitbox', hitboxSchema)
 
-// module.exports = Hitbox
+module.exports = Hitbox
