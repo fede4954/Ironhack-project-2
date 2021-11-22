@@ -20,6 +20,12 @@ app.use(express.static('public'))
 app.use(express.json())
 
 
+//ROUTES
+app.use('/', require('./routes/index'))
+
+app.use('/cars', require('./routes/cars'))
+
+
 //SERVER
 const PORT = process.env.PORT || 3000
 
