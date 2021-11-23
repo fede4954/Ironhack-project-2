@@ -5,7 +5,9 @@ require('./db')
 const express = require('express')
 const chalk = require('chalk')
 const hbs = require('hbs')
+const { urlencoded } = require('express')
 const app = express()
+const cookieParser = require('cookie-parser')
 
 
 //MIDDLEWARE
@@ -18,6 +20,10 @@ app.use(express.static('public'))
 
 //Body parser
 app.use(express.json())
+app.use(urlencoded({ extended: false }))
+
+//Cookie parser
+app.use(cookieParser())
 
 //Session
 require('./config/session.config')(app)
