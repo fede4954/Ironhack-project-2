@@ -74,18 +74,17 @@ router.post('/login', async (req, res) => {
 
 })
 
-// router.post('/logout', async (req, res, next) => {
-//     //Clear cookie
-//     res.clearCookie('connect.sid', { path: '/', })
+//Logout
+router.post('/logout', async (req, res, next) => {
+    res.clearCookie('connect.sid', { path: '/', })
 
-//     //Destroy session
-//     try {
-//         await req.session.destroy()
-//         res.redirect('/')
-//     }
-//     catch (err) {
-//         next(err)
-//     }
-// })
+    try {
+        await req.session.destroy()
+        res.redirect('/')
+    }
+    catch (err) {
+        next(err)
+    }
+})
 
 module.exports = router
