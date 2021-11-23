@@ -43,36 +43,36 @@ router.post('/signup', async (req, res) => {
 })
 
 //Login
-// router.get('/login', /*isLoggedIn,*/ (req, res) => { //Also prevent from logging in
-//     res.render('login')
-// })
+router.get('/login', (req, res) => {
+    res.render('login')
+})
 
 
-// router.post('/login', async (req, res) => {
-//     const { username, password } = req.body
+router.post('/login', async (req, res) => {
+    const { username, password } = req.body
 
-//     if (!username || !password) {
-//         res.render('login', { errorMsg: 'You need to fill all fields' })
-//     }
+    if (!username || !password) {
+        res.render('login', { errorMsg: 'All fields must be filled' })
+    }
 
-//     //Check if the input user exists
-//     const userFromDB = await User.findOne({ username })
-//     if (!userFromDB) {
-//         res.render('login', { errorMsg: 'User does not exist' })
-//     }
-//     else {
-//         const passwordCheck = await bcrypt.compare(password, userFromDB.password) //Input goes first
-//         if (!passwordCheck) {
-//             res.render('login', { errorMsg: 'Incorrect password' })
-//         }
-//         else {
+    //Check if username exists
+    const userFromDB = await User.findOne({ username })
+    if (!userFromDB) {
+        res.render('login', { errorMsg: 'User not found' })
+    }
 
-//             req.session.loggedUser = userFromDB
-//             // console.log('SESSION ======> ', req.session)
-//             res.redirect('/')
-//         }
-//     }
-// })
+    const passwordCheck = await bcrypt.compare(password, userFromDB.password)
+    if (!passwordCheck) {
+        res.render('login', { errorMsg: 'Incorrect password' })
+    }
+    else {
+
+        req.session.loggedUser = userFromDB
+        // console.log('SESSION ======> ', req.session)
+        res.redirect('/')
+    }
+
+})
 
 // router.post('/logout', async (req, res, next) => {
 //     //Clear cookie
