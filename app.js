@@ -19,11 +19,16 @@ app.use(express.static('public'))
 //Body parser
 app.use(express.json())
 
+//Session
+require('./config/session.config')(app)
+
 
 //ROUTES
-app.use('/', require('./routes/index'))
+app.use('/', require('./routes/index.routes'))
 
-app.use('/cars', require('./routes/cars'))
+app.use('/', require('./routes/auth'))
+
+app.use('/cars', require('./routes/car.routes'))
 
 
 //SERVER

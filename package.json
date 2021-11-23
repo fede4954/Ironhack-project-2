@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/fede4954/Ironhack-project-2#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "chalk": "^4.1.2",
     "connect-mongo": "^4.6.0",
     "dotenv": "^10.0.0",
