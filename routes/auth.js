@@ -66,7 +66,7 @@ router.post('/login', async (req, res) => {
         res.render('login', { errorMsg: 'Incorrect password' })
     }
     else {
-
+        //Add a property (an user) to the created session
         req.session.loggedUser = userFromDB
         // console.log('SESSION ======> ', req.session)
         res.redirect('/')

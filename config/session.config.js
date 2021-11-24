@@ -22,4 +22,14 @@ module.exports = app => {
             })
         })
     )
+
+    //This checks on every page if there's an user logged in, if there is, it stores it on the local variables
+    app.use((req, res, next) => {
+        if (req.session.loggedUser) {
+          res.locals.session = req.session
+        }
+        next()
+      })
 }
+
+
