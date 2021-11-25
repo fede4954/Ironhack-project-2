@@ -1,26 +1,27 @@
-<h2>Cars view</h2>
+<div class="container d-flex flex-column align-items-center text-center vh-100">
 
-<form action="/cars" method="POST">
-    <select name="sort">
-        <option value="AZ">
-            A-Z
-        </option>
-        <option value="ZA">
-            Z-A
-        </option>
-        <option value="favAsc">
-            Favorites (Asc)
-        </option>
-        <option value="favDesc">
-            Favorites (Desc)
-        </option>
-    </select>
+    <form action="/cars" method="POST" class="p-3">
+        <select name="sort" class="form-select">
+            <option value="AZ">
+                A-Z
+            </option>
+            <option value="ZA">
+                Z-A
+            </option>
+            <option value="favAsc">
+                Number of favorites (Asc)
+            </option>
+            <option value="favDesc">
+                Number of avorites (Desc)
+            </option>
+        </select>
+        <button type="submit" class="btn-primary">Apply filter</button>
+    </form>
 
-    <button type="submit">Apply filter</button>
-</form>
+    <div class="container d-flex flex-row flex-wrap justify-content-between">
+        {{#each cars}}
+        {{> carCard this}}
+        {{/each}}
+    </div>
 
-{{#each cars}}
-<img src="{{this.icon}}" />
-<a href="/car/{{this._id}}">{{this.name}}</a>
-<p>Favorited: {{this.timesFavorited}}</p>
-{{/each}}
+</div>

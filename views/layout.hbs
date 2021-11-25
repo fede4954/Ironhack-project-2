@@ -17,9 +17,9 @@
 <body class="container-fluid">
 
     <div id="bg-image">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient">
+        <nav class="navbar navbar-expand-lg navbar-primary bg-primary bg-gradient">
             <div class="container-fluid">
-                <a class="navbar-brand fw-bold" href="/">Rocket Garage</a>
+                <a class="navbar-brand fw-bold text-white" href="/">Rocket Garage</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -37,14 +37,14 @@
                     <div class="d-flex">
                         {{!-- If the user is logged, show profile and logout buttons --}}
                         {{#if session.loggedUser}}
-                        <a class="btn btn-outline-success" href="/profile">My Profile</a>
+                        <a class="btn btn-success" href="/profile">My Profile</a>
                         <form action="/logout" method="POST">
-                            <button class="btn btn-outline-danger" type="submit">Log Out</button>
+                            <button class="btn btn-danger" type="submit">Log Out</button>
                         </form>
                         {{!-- Otherwise, show login and signup buttons --}}
                         {{else}}
-                        <a class="btn btn-outline-success" href="/login">Log In</a>
-                        <a class="btn btn-outline-success" href="/signup">Sign Up</a>
+                        <a class="btn btn-success" href="/login">Log In</a>
+                        <a class="btn btn-success" href="/signup">Sign Up</a>
                         {{/if}}
                     </div>
                 </div>

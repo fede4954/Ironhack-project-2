@@ -18,6 +18,9 @@ app.set('view engine', 'hbs')
 //Public folder
 app.use(express.static(__dirname + '/public'))
 
+// Handlebars' partials location:
+hbs.registerPartials(__dirname + '/views/partials')
+
 //Body parser
 app.use(express.json())
 app.use(urlencoded({ extended: false }))
