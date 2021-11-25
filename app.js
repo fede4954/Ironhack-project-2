@@ -32,9 +32,13 @@ require('./config/session.config')(app)
 //ROUTES
 app.use('/', require('./routes/index.routes'))
 
+app.use('/', require('./routes/user.routes'))
+
 app.use('/', require('./routes/auth'))
 
-app.use('/cars', require('./routes/car.routes'))
+app.use('/car', require('./routes/car.routes'))
+
+app.use('/cars', require('./routes/cars.routes'))
 
 
 //SERVER

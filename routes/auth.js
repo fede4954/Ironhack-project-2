@@ -34,7 +34,7 @@ router.post('/signup', async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(password, 10)
         const createdUser = await User.create({ username, password: hashedPassword })
-        res.render('home')
+        res.redirect('/')
     }
     catch (err) {
         console.log('Error signing user up:', err)
@@ -69,7 +69,7 @@ router.post('/login', async (req, res) => {
         //Add a property (an user) to the created session
         req.session.loggedUser = userFromDB
         // console.log('SESSION ======> ', req.session)
-        res.redirect('/')
+        res.redirect('profile')
     }
 
 })

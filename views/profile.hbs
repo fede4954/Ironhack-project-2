@@ -1,1 +1,8 @@
 <h2>Profile view</h2>
+
+<h3>Your favorite cars:</h3>
+<ul>
+    {{#each user.favoriteCars}}
+    <li>{{this.name}}</li>
+    {{/each}}
+</ul>
