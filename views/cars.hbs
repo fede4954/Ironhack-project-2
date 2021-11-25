@@ -1,5 +1,6 @@
 <h2>Cars view</h2>
 
 {{#each cars}}
-<img src={{this.icon}} />
+<img src="{{this.icon}}.jpg" />
+<a href="/cars/{{this._id}}">{{this.name}}</a>
 {{/each}}
