@@ -9,7 +9,7 @@ const carSchema = new Schema({
     hitbox: { type: Schema.Types.ObjectId, ref: 'Hitbox' },
     variantsIds: [{ type: String }],
     description: { type: String, required: true },
-    timesFavorited: { type: Number, default: 0}
+    timesFavorited: { type: Number, default: 0, min: 0}
 })
 
 const Car = model('Car', carSchema)

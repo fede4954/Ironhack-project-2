@@ -17,4 +17,20 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.post('/', async (req, res) => {
+    try {
+        const filter = req.body.sort
+        const order = (filter === 'ZA' || filter === "favDesc") ?  -1 : 1
+        let cars = {}
+        if(filter === 'ZA' || filter === "AZ" ) 
+             cars = await Car.find({}, null, { sort: { name: order } })
+        else
+            cars = await Car.find({}, null, { sort: { timesFavorited: order } })
+        res.render('cars', {cars})
+    }
+    catch (err) {
+        console.log(chalk.bgRed('Error loading all cars:', err))
+    }
+})
+
 module.exports = router

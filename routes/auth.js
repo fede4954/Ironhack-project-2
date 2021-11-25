@@ -22,12 +22,14 @@ router.post('/signup', async (req, res) => {
     //Check if all fields are filled
     if (!username || !password) {
         res.render('signup', { errorMsg: 'All fields must be filled' })
+        return
     }
 
     //Check if username already exists
-    const unqUserCheck = await User.find({ username: username })
+    const unqUserCheck = await User.findOne({ username: username })
     if (unqUserCheck) {
         res.render('signup', { errorMsg: 'User already exists' })
+        return
     }
 
     //If everything is OK, try to register the user

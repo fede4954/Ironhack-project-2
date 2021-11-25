@@ -11,15 +11,21 @@ const User = require('../models/User.model')
 //ROUTES
 //Specific car page
 router.get('/:id', async (req, res) => {
-    // const userId = req.session.loggedUser._id
-    // const carId = mongoose.Types.ObjectId(req.params.id)
-    // console.log(carId)
-    // const favorited = false //Variable to check whether the car has been favorited by the current user or not
+    const userId = req.session.loggedUser._id
+    const carId = req.params.id
+    let favorited = false //Variable to check whether the car has been favorited by the current user or not
+
     try {
-        // const favoriteCheck = await User.findById(userId, { favoriteCars: carId})
-        // console.log(favoriteCheck)
-        const car = await Car.findById(req.params.id)
-        res.render('carInfo', { car })
+        const user = await User.findById(userId)
+        const favoriteCars = user.favoriteCars
+
+        for (let c of favoriteCars) {
+            if (c.toString() === carId) favorited = true
+        }
+
+        const car = await Car.findById(carId)
+        res.render('carInfo', { car, favorited })
+
     }
     catch (err) {
         console.log(chalk.bgRed('Error loading car\'s page:', err))
@@ -30,7 +36,8 @@ router.get('/:id', async (req, res) => {
 router.post('/:id/favorite', async (req, res) => {
     const userId = req.session.loggedUser._id
     try {
-        const carToFavorite = await Car.findById(req.params.id)
+        const carToFavorite = await Car.findByIdAndUpdate(req.params.id, { $inc: { timesFavorited: 1 } })
+
         const updatedUser = await User.findByIdAndUpdate(userId, { $push: { favoriteCars: carToFavorite._id } })
         res.render('home')
     }
@@ -43,7 +50,7 @@ router.post('/:id/favorite', async (req, res) => {
 router.post('/:id/unfavorite', async (req, res) => {
     const userId = req.session.loggedUser._id
     try {
-        const carToFavorite = await Car.findById(req.params.id)
+        const carToFavorite = await Car.findByIdAndUpdate(req.params.id, { $inc: { timesFavorited: -1 } })
         const updatedUser = await User.findByIdAndUpdate(userId, { $pull: { favoriteCars: carToFavorite._id } })
         res.render('home')
     }
