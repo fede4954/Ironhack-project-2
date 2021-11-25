@@ -16,7 +16,7 @@ app.set('views', __dirname + '/views')
 app.set('view engine', 'hbs')
 
 //Public folder
-app.use(express.static('public'))
+app.use(express.static(__dirname + '/public'))
 
 //Body parser
 app.use(express.json())
