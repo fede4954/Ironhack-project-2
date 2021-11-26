@@ -11,16 +11,19 @@ const User = require('../models/User.model')
 //ROUTES
 //Specific car page
 router.get('/:id', async (req, res) => {
-    const userId = req.session.loggedUser._id
+    let userId
+    if (req.session.loggedUser) userId = req.session.loggedUser._id
     const carId = req.params.id
     let favorited = false //Variable to check whether the car has been favorited by the current user or not
 
     try {
-        const user = await User.findById(userId)
-        const favoriteCars = user.favoriteCars
+        if (req.session.loggedUser) {
+            const user = await User.findById(userId)
+            const favoriteCars = user.favoriteCars
 
-        for (let c of favoriteCars) {
-            if (c.toString() === carId) favorited = true
+            for (let car of favoriteCars) {
+                if (car.toString() === carId) favorited = true
+            }
         }
 
         const car = await Car.findById(carId)
