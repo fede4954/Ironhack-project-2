@@ -5,6 +5,7 @@ const chalk = require('chalk')
 //MODELS
 const Car = require('../models/Car.model')
 
+
 //ROUTES
 //All cars page
 router.get('/', async (req, res) => {
@@ -17,6 +18,7 @@ router.get('/', async (req, res) => {
     }
 })
 
+//Filtered all cars page
 router.post('/', async (req, res) => {
     try {
         const filter = req.body.sort

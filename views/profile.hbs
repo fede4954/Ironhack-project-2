@@ -1,8 +1,18 @@
-<h2>Profile view</h2>
+<div class="container vh-100 d-flex justify-content-center align-items-center">
 
-<h3>Your favorite cars:</h3>
-<ul>
-    {{#each user.favoriteCars}}
-    <li>{{this.name}}</li>
-    {{/each}}
-</ul>
+    <div class="bg-light p-3">
+
+        <h3>{{user.username}}'s profile</h3>
+        <hr>
+
+        <h6>Your favorite cars:</h6>
+        <p>(You can click on the car's name to visit it's info page)</p>
+        <ul class="list-group text-center">
+            {{#each user.favoriteCars}}
+            <li class="list-group-item"><a href="/car/{{this._id}}" class="text-decoration-none fw-bold">{{this.name}}</a></li>
+            {{/each}}
+        </ul>
+
+    </div>
+
+</div>

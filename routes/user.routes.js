@@ -6,6 +6,7 @@ const chalk = require('chalk')
 const User = require('../models/User.model')
 const Car = require('../models/Car.model')
 
+
 //ROUTES
 //Profile page
 router.get('/profile', async (req, res) => {
