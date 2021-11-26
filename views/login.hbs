@@ -15,11 +15,15 @@
             <input type="password" name="password" class="form-control" id="passwordInput">
         </div>
 
-        <button type="submit" class="btn btn-primary">Log In</button>
+        {{#if msg}}
+        <p class="text-success">{{msg}}</p>
+        {{/if}}
 
         {{#if errorMsg}}
         <p class="text-danger">{{errorMsg}}</p>
         {{/if}}
+
+        <button type="submit" class="btn btn-primary">Log In</button>
 
     </form>
 
