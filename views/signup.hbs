@@ -1,17 +1,26 @@
-<h2>Sign Up</h2>
+<div class="container vh-100 d-flex justify-content-center align-items-center">
 
-<form action="/signup" method="POST">
+    <form action="/signup" method="POST" class="bg-light p-3">
 
-    <label>Username:</label>
-    <input type="text" name="username" required/>
+        <h3>Sign Up</h3>
+        <hr>
 
-    <label>Password:</label>
-    <input type="password" name="password" required/>
+        <div class="mb-3">
+            <label for="usernameInput" class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" id="usernameInput">
+        </div>
 
-    <button type="submit">Sign Up</button>
+        <div class="mb-3">
+            <label for="passwordInput" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="passwordInput">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Sign Up</button>
 
-</form>
+        {{#if errorMsg}}
+        <p class="text-danger">{{errorMsg}}</p>
+        {{/if}}
 
-{{#if errorMsg}}
-<h3>{{errorMsg}}</h3>
-{{/if}}
+    </form>
+
+</div>

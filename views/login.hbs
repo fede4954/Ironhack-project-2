@@ -1,17 +1,26 @@
-<h2>Log In</h2>
+<div class="container vh-100 d-flex justify-content-center align-items-center">
 
-<form action="/login" method="POST">
+    <form action="/login" method="POST" class="bg-light p-3">
 
-    <label>Username:</label>
-    <input type="text" name="username" required />
+        <h3>Log In</h3>
+        <hr>
 
-    <label>Password:</label>
-    <input type="password" name="password" required />
+        <div class="mb-3">
+            <label for="usernameInput" class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" id="usernameInput">
+        </div>
 
-    <button type="submit">Log In</button>
+        <div class="mb-3">
+            <label for="passwordInput" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="passwordInput">
+        </div>
 
-</form>
+        <button type="submit" class="btn btn-primary">Log In</button>
 
-{{#if errorMsg}}
-<h3>{{errorMsg}}</h3>
-{{/if}}
+        {{#if errorMsg}}
+        <p class="text-danger">{{errorMsg}}</p>
+        {{/if}}
+
+    </form>
+
+</div>
