@@ -1,15 +1,43 @@
-<div class="container d-flex flex-column align-items-center text-center vh-100">
-    <h2>{{car.name}}</h2>
+<div class="container vh-100">
 
-    {{#if session.loggedUser}}
-    {{#if favorited}}
-    <form action="/car/{{car._id}}/unfavorite" method="POST">
-        <button type="submit">Remove from favorites</button>
-    </form>
-    {{else}}
-    <form action="/car/{{car._id}}/favorite" method="POST">
-        <button type="submit">Add to favorites</button>
-    </form>
-    {{/if}}
-    {{/if}}
+    <div class="bg-dark bg-opacity-75 d-flex flex-column align-items-center justify-content-center mt-3">
+
+        <div class="card text-center mt-3" style="width: 200px;">
+            <img src="{{car.icon}}" class="card-img-top" alt="{{car.name}}'s image">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">{{car.name}}</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item fw-bold">Release date: <span class="fw-normal">{{car.releaseDate}}</span>
+                    </li>
+                    <li class="list-group-item fw-bold">Rarity: {{#each car.rarity}}
+                        <span class="fw-normal">{{this}}</span>
+                        {{/each}}
+                    </li>
+                    {{#if car.paintable}}
+                    <li class="list-group-item fw-bold">Paintable</li>
+                    {{/if}}
+                    <li class="list-group-item fw-bold">Hitbox: <span class="fw-normal">{{car.hitbox.name}}</span>
+                    </li>
+                </ul>
+                {{#if session.loggedUser}}
+                {{#if favorited}}
+                <form action="/car/{{car._id}}/unfavorite" method="POST">
+                    <button type="submit" class="btn-danger">Remove from favorites</button>
+                </form>
+                {{else}}
+                <form action="/car/{{car._id}}/favorite" method="POST">
+                    <button type="submit" class="btn-primary">Add to favorites</button>
+                </form>
+                {{/if}}
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="text-center p-3">
+            <p class="text-white">
+                {{car.description}}
+            </p>
+        </div>
+
+    </div>
 </div>

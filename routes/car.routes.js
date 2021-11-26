@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 //MODELS
 const Car = require('../models/Car.model')
 const User = require('../models/User.model')
+const Hitbox = require('../models/Hitbox.model')
 
 
 //ROUTES
@@ -15,7 +16,6 @@ router.get('/:id', async (req, res) => {
     if (req.session.loggedUser) userId = req.session.loggedUser._id
     const carId = req.params.id
     let favorited = false //Variable to check whether the car has been favorited by the current user or not
-
     try {
         if (req.session.loggedUser) {
             const user = await User.findById(userId)
@@ -25,10 +25,9 @@ router.get('/:id', async (req, res) => {
                 if (car.toString() === carId) favorited = true
             }
         }
-
-        const car = await Car.findById(carId)
+        
+        const car = await Car.findById(carId).populate('hitbox')
         res.render('carInfo', { car, favorited })
-
     }
     catch (err) {
         console.log(chalk.bgRed('Error loading car\'s page:', err))
