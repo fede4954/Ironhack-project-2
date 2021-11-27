@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 
 
 //MIDDLEWARE
-// const { isLoggedIn } = require('../middleware/route-guard')
+const { isLoggedIn } = require('../middleware/route-guard')
 
 
 //MODELS
@@ -12,7 +12,7 @@ const User = require('../models/User.model')
 
 //ROUTES
 //Signup
-router.get('/signup', (req, res) => {
+router.get('/signup', isLoggedIn, (req, res) => {
     res.render('signup')
 })
 
@@ -45,7 +45,7 @@ router.post('/signup', async (req, res) => {
 })
 
 //Login
-router.get('/login', (req, res) => {
+router.get('/login', isLoggedIn, (req, res) => {
     res.render('login')
 })
 

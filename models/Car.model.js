@@ -7,7 +7,7 @@ const carSchema = new Schema({
     rarity: [{ type: String, required: true }],
     paintable: { type: Boolean, default: false },
     hitbox: { type: Schema.Types.ObjectId, ref: 'Hitbox' },
-    variantsIds: [{ type: String }],
+    variants: [{ type: String }],
     description: { type: String, required: true },
     timesFavorited: { type: Number, default: 0, min: 0}
 })
