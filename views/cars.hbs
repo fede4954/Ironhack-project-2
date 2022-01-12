@@ -19,10 +19,12 @@
         <button type="submit" class="btn-primary w-50 h-50">Apply filter</button>
     </form>
 
-    <div class="container d-flex flex-row flex-wrap justify-content-evenly">
+    <div class="container d-flex flex-row flex-wrap justify-content-evenly mb-3">
         {{#each cars}}
         {{> carCard this}}
         {{/each}}
     </div>
+
+    {{>footNote}}
 
 </div>
