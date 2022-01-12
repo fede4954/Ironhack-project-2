@@ -19,8 +19,8 @@
                     <li class="list-group-item fw-bold">Hitbox: <span class="fw-normal">{{car.hitbox}}</span>
                     </li>
                     {{#if car.variants}}
-                    <li class="list-group-item fw-bold">{{#each car.variants}}
-                        <span class="fw-normal">{{this}}</span>
+                    <li class="list-group-item fw-bold">Variants: {{#each variantCars}}
+                        <a href="{{this.id}}"><span class="fw-normal">{{this.name}}</span></a>
                         {{/each}}
                     </li>
                     {{/if}}

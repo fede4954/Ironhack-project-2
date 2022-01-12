@@ -26,7 +26,14 @@ router.get('/:id', async (req, res) => {
         }
 
         const car = await Car.findById(carId)
-        res.render('carInfo', { car, favorited })
+
+        const variantCars = []
+        if (car.variants) {
+            for (let i = 0; i < car.variants.length; i++) {
+                variantCars.unshift(await Car.findOne({ name: car.variants[i] }))  
+            }
+        }
+        res.render('carInfo', { car, favorited, variantCars })
     }
     catch (err) {
         console.log(chalk.bgRed('Error loading car\'s page:', err))
