@@ -16,8 +16,14 @@
                     {{#if car.paintable}}
                     <li class="list-group-item fw-bold">Paintable</li>
                     {{/if}}
-                    <li class="list-group-item fw-bold">Hitbox: <span class="fw-normal">{{car.hitbox.name}}</span>
+                    <li class="list-group-item fw-bold">Hitbox: <span class="fw-normal">{{car.hitbox}}</span>
                     </li>
+                    {{#if car.variants}}
+                    <li class="list-group-item fw-bold">{{#each car.variants}}
+                        <span class="fw-normal">{{this}}</span>
+                        {{/each}}
+                    </li>
+                    {{/if}}
                 </ul>
                 {{#if session.loggedUser}}
                 {{#if favorited}}

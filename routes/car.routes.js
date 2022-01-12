@@ -6,7 +6,6 @@ const mongoose = require('mongoose')
 //MODELS
 const Car = require('../models/Car.model')
 const User = require('../models/User.model')
-const Hitbox = require('../models/Hitbox.model')
 
 
 //ROUTES
@@ -26,7 +25,7 @@ router.get('/:id', async (req, res) => {
             }
         }
 
-        const car = await Car.findById(carId).populate('hitbox')
+        const car = await Car.findById(carId)
         res.render('carInfo', { car, favorited })
     }
     catch (err) {
