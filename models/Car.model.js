@@ -3,6 +3,7 @@ const { Schema, model } = require('mongoose')
 const carSchema = new Schema({
     name: { type: String, required: true },
     icon: { type: String, required: true },
+    image: {type: String, required: true},
     releaseDate: { type: String, required: true },
     rarity: [{ type: String, required: true }],
     paintable: { type: Boolean, default: false },
