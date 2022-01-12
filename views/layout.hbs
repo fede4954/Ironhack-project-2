@@ -32,11 +32,19 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="/cars">Cars</a>
                     </li>
+                    {{#if session.loggedUser}}
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/profile">Profile</a>
+                    </li>
+                    {{/if}}
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="https://rocketleague.fandom.com/wiki/Rocket_League_Wiki"
+                            target=_blank>Wiki</a>
+                    </li>
                 </ul>
                 <div id="auth-buttons" class="d-flex justify-content-between">
-                    {{!-- If the user is logged, show profile and logout buttons --}}
+                    {{!-- If the user is logged, show logout button --}}
                     {{#if session.loggedUser}}
-                    <a class="btn btn-success" href="/profile">My Profile</a>
                     <form action="/logout" method="POST">
                         <button class="btn btn-danger" type="submit">Log Out</button>
                     </form>
