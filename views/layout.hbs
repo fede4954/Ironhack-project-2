@@ -33,7 +33,7 @@
                         <a class="nav-link text-white" href="/cars">Cars</a>
                     </li>
                 </ul>
-                <div class="d-flex">
+                <div id="auth-buttons" class="d-flex justify-content-between">
                     {{!-- If the user is logged, show profile and logout buttons --}}
                     {{#if session.loggedUser}}
                     <a class="btn btn-success" href="/profile">My Profile</a>

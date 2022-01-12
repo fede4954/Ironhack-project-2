@@ -4,14 +4,19 @@ body {
 }
 
 .bg-image {
-  background-image: linear-gradient(
-      rgba(0, 0, 0, 0.45),
-      rgba(0, 0, 0, 0.45)
-    ),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
     url(../images/Dominus.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+#auth-buttons {
+  width: 17.5%;
+}
+
+#auth-buttons a {
+  width: 45%;
 }
 
 .car-card {
