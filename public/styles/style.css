@@ -3,8 +3,12 @@ body {
   padding: 0 !important;
 }
 
-#bg-image {
-  background-image: url(https://rocketleague.media.zestyio.com/rl_platform_keyart_2019.309bf22bd29c2e411e9dd8eb07575bb1.jpg);
+.bg-image {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    ),
+    url(../images/Dominus.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
