@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
         const variantCars = []
         if (car.variants) {
             for (let i = 0; i < car.variants.length; i++) {
-                variantCars.unshift(await Car.findOne({ name: car.variants[i] }))  
+                variantCars.unshift(await Car.findOne({ name: car.variants[i] }))
             }
         }
         res.render('carInfo', { car, favorited, variantCars })
@@ -46,8 +46,15 @@ router.post('/:id/favorite', async (req, res) => {
     try {
         const carToFavorite = await Car.findByIdAndUpdate(req.params.id, { $inc: { timesFavorited: 1 } })
 
-        const updatedUser = await User.findByIdAndUpdate(userId, { $push: { favoriteCars: carToFavorite._id } })
-        res.render('carInfo', { car: carToFavorite, favorited: true })
+        const variantCars = []
+        if (carToFavorite.variants) {
+            for (let i = 0; i < carToFavorite.variants.length; i++) {
+                variantCars.unshift(await Car.findOne({ name: carToFavorite.variants[i] }))
+            }
+        }
+
+        await User.findByIdAndUpdate(userId, { $push: { favoriteCars: carToFavorite._id } })
+        res.render('carInfo', { car: carToFavorite, favorited: true, variantCars })
     }
     catch (err) {
         console.log(chalk.bgRed('Error adding car to favorites:', err))
@@ -59,8 +66,16 @@ router.post('/:id/unfavorite', async (req, res) => {
     const userId = req.session.loggedUser._id
     try {
         const carToUnfavorite = await Car.findByIdAndUpdate(req.params.id, { $inc: { timesFavorited: -1 } })
-        const updatedUser = await User.findByIdAndUpdate(userId, { $pull: { favoriteCars: carToUnfavorite._id } })
-        res.render('carInfo', { car: carToUnfavorite, favorited: false })
+
+        const variantCars = []
+        if (carToUnfavorite.variants) {
+            for (let i = 0; i < carToUnfavorite.variants.length; i++) {
+                variantCars.unshift(await Car.findOne({ name: carToUnfavorite.variants[i] }))
+            }
+        }
+
+        await User.findByIdAndUpdate(userId, { $pull: { favoriteCars: carToUnfavorite._id } })
+        res.render('carInfo', { car: carToUnfavorite, favorited: false, variantCars })
     }
     catch (err) {
         console.log(chalk.bgRed('Error removing car from favorites:', err))
