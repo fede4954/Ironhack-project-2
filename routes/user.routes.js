@@ -20,7 +20,7 @@ router.get('/profile', isLoggedOut, async (req, res) => {
         res.render('profile', { user })
     }
     catch (err) {
-        console.log(chalk.bgRed('Error loading user\'s profile:', err))
+        next(err)
     }
 })
 

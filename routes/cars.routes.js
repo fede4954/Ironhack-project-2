@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         res.render('cars', { cars })
     }
     catch (err) {
-        console.log(chalk.bgRed('Error loading all cars:', err))
+        next(err)
     }
 })
 
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
         res.render('cars', {cars})
     }
     catch (err) {
-        console.log(chalk.bgRed('Error loading all cars:', err))
+        next(err)
     }
 })
 

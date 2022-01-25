@@ -39,7 +39,7 @@ router.post('/signup', async (req, res) => {
         res.render('login', { msg: 'Signed up succesfully, please re enter your credentials to log in' })
     }
     catch (err) {
-        console.log('Error signing user up:', err)
+        next(err)
     }
 
 })

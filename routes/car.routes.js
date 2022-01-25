@@ -1,5 +1,4 @@
 const router = require('express').Router()
-const chalk = require('chalk')
 const mongoose = require('mongoose')
 
 
@@ -36,7 +35,7 @@ router.get('/:id', async (req, res) => {
         res.render('carInfo', { car, favorited, variantCars })
     }
     catch (err) {
-        console.log(chalk.bgRed('Error loading car\'s page:', err))
+        next(err)
     }
 })
 
@@ -57,7 +56,7 @@ router.post('/:id/favorite', async (req, res) => {
         res.render('carInfo', { car: carToFavorite, favorited: true, variantCars })
     }
     catch (err) {
-        console.log(chalk.bgRed('Error adding car to favorites:', err))
+        next(err)
     }
 })
 
@@ -78,7 +77,7 @@ router.post('/:id/unfavorite', async (req, res) => {
         res.render('carInfo', { car: carToUnfavorite, favorited: false, variantCars })
     }
     catch (err) {
-        console.log(chalk.bgRed('Error removing car from favorites:', err))
+        next(err)
     }
 })
 
