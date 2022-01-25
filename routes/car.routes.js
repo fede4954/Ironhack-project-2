@@ -44,7 +44,7 @@ router.get('/:id', async (req, res) => {
 router.post('/:id/favorite', async (req, res) => {
     const userId = req.session.loggedUser._id
     try {
-        const carToFavorite = await Car.findByIdAndUpdate(req.params.id, { $inc: { timesFavorited: 1 } })
+        const carToFavorite = await Car.findByIdAndUpdate(req.params.id, { $inc: { likes: 1 } })
 
         const variantCars = []
         if (carToFavorite.variants) {

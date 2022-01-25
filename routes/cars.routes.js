@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
         if(filter === 'ZA' || filter === "AZ" ) 
              cars = await Car.find({}, null, { sort: { name: order } })
         else
-            cars = await Car.find({}, null, { sort: { timesFavorited: order } })
+            cars = await Car.find({}, null, { sort: { likes: order } })
         res.render('cars', {cars})
     }
     catch (err) {
