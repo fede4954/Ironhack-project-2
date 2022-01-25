@@ -5,7 +5,7 @@ body {
 
 .bg-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.70)),
-    url(../images/Dominus.jpg);
+    url(../images/Backgrounds/Dominus.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -21,4 +21,10 @@ body {
 
 .car-card {
   background-color: black !important;
+}
+
+image {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
