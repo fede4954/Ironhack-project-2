@@ -1,18 +1,21 @@
-<div class="container d-flex justify-content-center align-items-center h-75 w-25">
+<div class="container d-flex justify-content-center align-items-center h-75 w-50">
 
-    <div class="bg-dark p-3 text-white w-100">
+    <div class="bg-dark p-3 text-white h-75 w-100">
+        <div class="h-25">
+            <h3>{{user.username}}'s profile</h3>
+            <hr>
+        </div>
 
-        <h3>{{user.username}}'s profile</h3>
-        <hr>
-
-        <h6>Your favorite cars:</h6>
-        <p>(You can click on the car's name to visit it's info page)</p>
-        <ul class="list-group text-center">
-            {{#each user.favoriteCars}}
-            <li class="list-group-item"><a href="/car/{{this._id}}" class="text-decoration-none fw-bold">{{this.name}}</a></li>
-            {{/each}}
-        </ul>
-
+        <div class="h-75">
+            <h6>Your favorite cars:</h6>
+            <p>(You can click on the car's name to visit it's info page)</p>
+            <ul class="liked-cars list-group text-center h-75">
+                {{#each user.favoriteCars}}
+                <li class="list-group-item"><a href="/car/{{this._id}}"
+                        class="text-decoration-none fw-bold">{{this.name}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
     </div>
 
 </div>

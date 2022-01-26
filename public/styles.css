@@ -35,3 +35,7 @@ image {
   max-width: 100%;
   height: auto;
 }
+
+.liked-cars {
+  overflow: auto;
+}
