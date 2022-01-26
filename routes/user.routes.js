@@ -1,5 +1,4 @@
 const router = require('express').Router()
-const chalk = require('chalk')
 
 
 //MIDDLEWARE
@@ -13,7 +12,7 @@ const Car = require('../models/Car.model')
 
 //ROUTES
 //Profile page
-router.get('/profile', isLoggedOut, async (req, res) => {
+router.get('/profile', isLoggedOut, async (req, res, next) => {
     const userId = req.session.loggedUser._id
     try {
         const user = await User.findById(userId).populate('favoriteCars')

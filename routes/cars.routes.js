@@ -1,5 +1,4 @@
 const router = require('express').Router()
-const chalk = require('chalk')
 
 
 //MODELS
@@ -8,7 +7,7 @@ const Car = require('../models/Car.model')
 
 //ROUTES
 //All cars page
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
     try {
         const cars = await Car.find({})
         res.render('cars', { cars })
@@ -19,7 +18,7 @@ router.get('/', async (req, res) => {
 })
 
 //Filtered all cars page
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
     try {
         const filter = req.body.sort
         const order = (filter === 'ZA' || filter === "favDesc") ?  -1 : 1

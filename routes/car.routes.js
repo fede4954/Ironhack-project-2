@@ -9,7 +9,7 @@ const User = require('../models/User.model')
 
 //ROUTES
 //Specific car page
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res, next) => {
     let userId
     if (req.session.loggedUser) userId = req.session.loggedUser._id
     const carId = req.params.id
@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
 })
 
 //Add a car to favorites
-router.post('/:id/favorite', async (req, res) => {
+router.post('/:id/favorite', async (req, res, next) => {
     const userId = req.session.loggedUser._id
     try {
         const carToFavorite = await Car.findByIdAndUpdate(req.params.id, { $inc: { likes: 1 } })
@@ -61,7 +61,7 @@ router.post('/:id/favorite', async (req, res) => {
 })
 
 //Remove car from favorites
-router.post('/:id/unfavorite', async (req, res) => {
+router.post('/:id/unfavorite', async (req, res, next) => {
     const userId = req.session.loggedUser._id
     try {
         const carToUnfavorite = await Car.findByIdAndUpdate(req.params.id, { $inc: { likes: -1 } })
