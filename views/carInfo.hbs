@@ -28,11 +28,11 @@
                 {{#if session.loggedUser}}
                 {{#if favorited}}
                 <form action="/car/{{car._id}}/unfavorite" method="POST">
-                    <button type="submit" class="btn-danger">Remove from favorites</button>
+                    <button type="submit" class="btn-danger rounded fw-bold">Remove from favorites</button>
                 </form>
                 {{else}}
                 <form action="/car/{{car._id}}/favorite" method="POST">
-                    <button type="submit" class="btn-primary">Add to favorites</button>
+                    <button type="submit" class="btn-primary rounded fw-bold">Add to favorites</button>
                 </form>
                 {{/if}}
                 {{/if}}
